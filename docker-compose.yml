@@ -1,0 +1,17 @@
+version: '3'
+services:
+  rinna-llm-test:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+    restart: always
+    build: .
+    container_name: 'riina-llm-test'
+    working_dir: '/root/'
+    tty: true
+    volumes:
+      - ./opt:/root/opt
